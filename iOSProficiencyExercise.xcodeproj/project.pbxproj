@@ -9,19 +9,29 @@
 /* Begin PBXBuildFile section */
 		1D013E0E24364DC900EBC229 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E0D24364DC900EBC229 /* AppDelegate.swift */; };
 		1D013E1024364DC900EBC229 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E0F24364DC900EBC229 /* SceneDelegate.swift */; };
-		1D013E1224364DC900EBC229 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E1124364DC900EBC229 /* ViewController.swift */; };
+		1D013E1224364DC900EBC229 /* FactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E1124364DC900EBC229 /* FactsVC.swift */; };
 		1D013E1724364DCA00EBC229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D013E1624364DCA00EBC229 /* Assets.xcassets */; };
 		1D013E1A24364DCA00EBC229 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D013E1824364DCA00EBC229 /* LaunchScreen.storyboard */; };
+		1D013E29243655FE00EBC229 /* FactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E28243655FE00EBC229 /* FactsModel.swift */; };
+		1D013E2B2436566900EBC229 /* FactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E2A2436566900EBC229 /* FactsViewModel.swift */; };
+		1D013E2D243657CC00EBC229 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E2C243657CC00EBC229 /* Constants.swift */; };
+		1D013E302436888200EBC229 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E2F2436888200EBC229 /* Extension+String.swift */; };
+		1D013E322436893200EBC229 /* WebServicesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E312436893200EBC229 /* WebServicesHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D013E0A24364DC900EBC229 /* iOSProficiencyExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProficiencyExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D013E0D24364DC900EBC229 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D013E0F24364DC900EBC229 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1D013E1124364DC900EBC229 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1D013E1124364DC900EBC229 /* FactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsVC.swift; sourceTree = "<group>"; };
 		1D013E1624364DCA00EBC229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D013E1924364DCA00EBC229 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D013E1B24364DCA00EBC229 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D013E28243655FE00EBC229 /* FactsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsModel.swift; sourceTree = "<group>"; };
+		1D013E2A2436566900EBC229 /* FactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewModel.swift; sourceTree = "<group>"; };
+		1D013E2C243657CC00EBC229 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1D013E2F2436888200EBC229 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		1D013E312436893200EBC229 /* WebServicesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServicesHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,51 @@
 		1D013E0C24364DC900EBC229 /* iOSProficiencyExercise */ = {
 			isa = PBXGroup;
 			children = (
+				1D013E2E2436886D00EBC229 /* Extensions */,
+				1D013E27243655E600EBC229 /* ViewModel */,
+				1D013E26243655DF00EBC229 /* View */,
+				1D013E25243655D800EBC229 /* Model */,
 				1D013E0D24364DC900EBC229 /* AppDelegate.swift */,
 				1D013E0F24364DC900EBC229 /* SceneDelegate.swift */,
-				1D013E1124364DC900EBC229 /* ViewController.swift */,
 				1D013E1624364DCA00EBC229 /* Assets.xcassets */,
 				1D013E1824364DCA00EBC229 /* LaunchScreen.storyboard */,
 				1D013E1B24364DCA00EBC229 /* Info.plist */,
+				1D013E2C243657CC00EBC229 /* Constants.swift */,
+				1D013E312436893200EBC229 /* WebServicesHandler.swift */,
 			);
 			path = iOSProficiencyExercise;
+			sourceTree = "<group>";
+		};
+		1D013E25243655D800EBC229 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1D013E28243655FE00EBC229 /* FactsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D013E26243655DF00EBC229 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1D013E1124364DC900EBC229 /* FactsVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D013E27243655E600EBC229 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D013E2A2436566900EBC229 /* FactsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1D013E2E2436886D00EBC229 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1D013E2F2436888200EBC229 /* Extension+String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +181,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D013E1224364DC900EBC229 /* ViewController.swift in Sources */,
+				1D013E1224364DC900EBC229 /* FactsVC.swift in Sources */,
+				1D013E302436888200EBC229 /* Extension+String.swift in Sources */,
+				1D013E29243655FE00EBC229 /* FactsModel.swift in Sources */,
+				1D013E322436893200EBC229 /* WebServicesHandler.swift in Sources */,
+				1D013E2B2436566900EBC229 /* FactsViewModel.swift in Sources */,
 				1D013E0E24364DC900EBC229 /* AppDelegate.swift in Sources */,
 				1D013E1024364DC900EBC229 /* SceneDelegate.swift in Sources */,
+				1D013E2D243657CC00EBC229 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

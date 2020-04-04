@@ -16,7 +16,12 @@
 		1D013E2B2436566900EBC229 /* FactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E2A2436566900EBC229 /* FactsViewModel.swift */; };
 		1D013E2D243657CC00EBC229 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E2C243657CC00EBC229 /* Constants.swift */; };
 		1D013E302436888200EBC229 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E2F2436888200EBC229 /* Extension+String.swift */; };
-		1D013E322436893200EBC229 /* WebServicesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D013E312436893200EBC229 /* WebServicesHandler.swift */; };
+		1D4A49A12437FE2E00B1D57A /* FactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49A02437FE2E00B1D57A /* FactsCell.swift */; };
+		1D4A49A32437FF2A00B1D57A /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49A22437FF2A00B1D57A /* Extension+UIView.swift */; };
+		1D4A49A52438016C00B1D57A /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49A42438016C00B1D57A /* CacheManager.swift */; };
+		1D4A49A7243875AE00B1D57A /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49A6243875AE00B1D57A /* Extension+UIViewController.swift */; };
+		1D4A49A9243886C700B1D57A /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49A8243886C700B1D57A /* Extension+UIImageView.swift */; };
+		1D4A49AB2438E39800B1D57A /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49AA2438E39800B1D57A /* CustomImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +36,12 @@
 		1D013E2A2436566900EBC229 /* FactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewModel.swift; sourceTree = "<group>"; };
 		1D013E2C243657CC00EBC229 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1D013E2F2436888200EBC229 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
-		1D013E312436893200EBC229 /* WebServicesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServicesHandler.swift; sourceTree = "<group>"; };
+		1D4A49A02437FE2E00B1D57A /* FactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsCell.swift; sourceTree = "<group>"; };
+		1D4A49A22437FF2A00B1D57A /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
+		1D4A49A42438016C00B1D57A /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		1D4A49A6243875AE00B1D57A /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		1D4A49A8243886C700B1D57A /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
+		1D4A49AA2438E39800B1D57A /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +74,9 @@
 		1D013E0C24364DC900EBC229 /* iOSProficiencyExercise */ = {
 			isa = PBXGroup;
 			children = (
+				1D4A49AF2439300300B1D57A /* Custom Classes */,
 				1D013E2E2436886D00EBC229 /* Extensions */,
+				1D4A49B02439301000B1D57A /* Helpers */,
 				1D013E27243655E600EBC229 /* ViewModel */,
 				1D013E26243655DF00EBC229 /* View */,
 				1D013E25243655D800EBC229 /* Model */,
@@ -73,8 +85,6 @@
 				1D013E1624364DCA00EBC229 /* Assets.xcassets */,
 				1D013E1824364DCA00EBC229 /* LaunchScreen.storyboard */,
 				1D013E1B24364DCA00EBC229 /* Info.plist */,
-				1D013E2C243657CC00EBC229 /* Constants.swift */,
-				1D013E312436893200EBC229 /* WebServicesHandler.swift */,
 			);
 			path = iOSProficiencyExercise;
 			sourceTree = "<group>";
@@ -91,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				1D013E1124364DC900EBC229 /* FactsVC.swift */,
+				1D4A49AE24392FEC00B1D57A /* TableCells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -107,8 +118,36 @@
 			isa = PBXGroup;
 			children = (
 				1D013E2F2436888200EBC229 /* Extension+String.swift */,
+				1D4A49A22437FF2A00B1D57A /* Extension+UIView.swift */,
+				1D4A49A6243875AE00B1D57A /* Extension+UIViewController.swift */,
+				1D4A49A8243886C700B1D57A /* Extension+UIImageView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1D4A49AE24392FEC00B1D57A /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				1D4A49A02437FE2E00B1D57A /* FactsCell.swift */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
+		1D4A49AF2439300300B1D57A /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1D4A49AA2438E39800B1D57A /* CustomImageView.swift */,
+			);
+			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		1D4A49B02439301000B1D57A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1D013E2C243657CC00EBC229 /* Constants.swift */,
+				1D4A49A42438016C00B1D57A /* CacheManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,11 +223,16 @@
 				1D013E1224364DC900EBC229 /* FactsVC.swift in Sources */,
 				1D013E302436888200EBC229 /* Extension+String.swift in Sources */,
 				1D013E29243655FE00EBC229 /* FactsModel.swift in Sources */,
-				1D013E322436893200EBC229 /* WebServicesHandler.swift in Sources */,
+				1D4A49AB2438E39800B1D57A /* CustomImageView.swift in Sources */,
+				1D4A49A52438016C00B1D57A /* CacheManager.swift in Sources */,
+				1D4A49A32437FF2A00B1D57A /* Extension+UIView.swift in Sources */,
 				1D013E2B2436566900EBC229 /* FactsViewModel.swift in Sources */,
+				1D4A49A9243886C700B1D57A /* Extension+UIImageView.swift in Sources */,
+				1D4A49A7243875AE00B1D57A /* Extension+UIViewController.swift in Sources */,
 				1D013E0E24364DC900EBC229 /* AppDelegate.swift in Sources */,
 				1D013E1024364DC900EBC229 /* SceneDelegate.swift in Sources */,
 				1D013E2D243657CC00EBC229 /* Constants.swift in Sources */,
+				1D4A49A12437FE2E00B1D57A /* FactsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,18 +14,21 @@ enum FactsError: Error {
 }
 
 struct FactsViewModel {
-  let factsArray: [FactsModel]
+  var factsArray: [Row]
+  var title: String
   let factsAPI: String
   
   init(_ apiURL: String) {
     factsAPI = apiURL
     factsArray = []
+    title = ""
   }
   
-  func getFactsFromAPI(completion: @escaping(Result<[Row], FactsError>) -> Void) -> Void {
+  func getFactsFromAPI(completion: @escaping(Result<FactsModel, FactsError>) -> Void) -> Void {
     guard let url = URL(string: factsAPI) else { return }
     let urlRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-    let task = URLSession.shared.dataTask(with: urlRequest) { (data, _, _) in
+    
+    let task = URLSession.shared.dataTask(with: urlRequest) {(data, _, _) in
       if let data = data {
         do {
           let str = String(decoding: data, as: UTF8.self)
@@ -35,11 +38,7 @@ struct FactsViewModel {
             
             let factsObject = try JSONDecoder().decode(FactsModel.self, from: newData)
             
-            if let factsArray = factsObject.rows {
-              completion(.success(factsArray))
-            } else {
-              completion(.failure(.noFactsAvailable))
-            }
+            completion(.success(factsObject))
           }
         } catch let error {
           print(error.localizedDescription)

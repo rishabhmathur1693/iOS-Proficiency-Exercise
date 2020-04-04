@@ -6,20 +6,25 @@
 //  Copyright © 2020 Rishabh Mathur. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct FactsModel: Codable {
-    var title: String?
-    var rows: [Row]?
+  var title: String?
+  var rows: [Row]?
 }
 
 struct Row: Codable {
-    var title, rowDescription: String?
-    var imageHref: String?
-
-    enum CodingKeys: String, CodingKey {
-        case title
-        case rowDescription = "description"
-        case imageHref
-    }
+  var title, rowDescription: String?
+  var imageHref: String?
+  var image: Data?
+  
+  enum CodingKeys: String, CodingKey {
+    case title
+    case rowDescription = "description"
+    case imageHref, image
+  }
+  
+  mutating func updateImageData(_ data: Data?) {
+    self.image = data
+  }
 }

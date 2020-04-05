@@ -22,6 +22,8 @@
 		1D4A49A7243875AE00B1D57A /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49A6243875AE00B1D57A /* Extension+UIViewController.swift */; };
 		1D4A49A9243886C700B1D57A /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49A8243886C700B1D57A /* Extension+UIImageView.swift */; };
 		1D4A49AB2438E39800B1D57A /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49AA2438E39800B1D57A /* CustomImageView.swift */; };
+		1D83F231243A9E2D00EC901B /* WebServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D83F230243A9E2D00EC901B /* WebServiceHandler.swift */; };
+		1DD818702439FC4100D21678 /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD8186F2439FC4100D21678 /* ReuseIdentifierProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		1D4A49A6243875AE00B1D57A /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		1D4A49A8243886C700B1D57A /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
 		1D4A49AA2438E39800B1D57A /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		1D83F230243A9E2D00EC901B /* WebServiceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceHandler.swift; sourceTree = "<group>"; };
+		1DD8186F2439FC4100D21678 /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,8 @@
 			children = (
 				1D013E2C243657CC00EBC229 /* Constants.swift */,
 				1D4A49A42438016C00B1D57A /* CacheManager.swift */,
+				1DD8186F2439FC4100D21678 /* ReuseIdentifierProtocol.swift */,
+				1D83F230243A9E2D00EC901B /* WebServiceHandler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -227,11 +233,13 @@
 				1D4A49A52438016C00B1D57A /* CacheManager.swift in Sources */,
 				1D4A49A32437FF2A00B1D57A /* Extension+UIView.swift in Sources */,
 				1D013E2B2436566900EBC229 /* FactsViewModel.swift in Sources */,
+				1D83F231243A9E2D00EC901B /* WebServiceHandler.swift in Sources */,
 				1D4A49A9243886C700B1D57A /* Extension+UIImageView.swift in Sources */,
 				1D4A49A7243875AE00B1D57A /* Extension+UIViewController.swift in Sources */,
 				1D013E0E24364DC900EBC229 /* AppDelegate.swift in Sources */,
 				1D013E1024364DC900EBC229 /* SceneDelegate.swift in Sources */,
 				1D013E2D243657CC00EBC229 /* Constants.swift in Sources */,
+				1DD818702439FC4100D21678 /* ReuseIdentifierProtocol.swift in Sources */,
 				1D4A49A12437FE2E00B1D57A /* FactsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

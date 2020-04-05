@@ -6,7 +6,7 @@
 //  Copyright © 2020 Rishabh Mathur. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct FactsModel: Codable {
   var title: String?
@@ -16,15 +16,10 @@ struct FactsModel: Codable {
 struct Row: Codable {
   var title, rowDescription: String?
   var imageHref: String?
-  var image: Data?
   
   enum CodingKeys: String, CodingKey {
     case title
     case rowDescription = "description"
-    case imageHref, image
-  }
-  
-  mutating func updateImageData(_ data: Data?) {
-    self.image = data
+    case imageHref
   }
 }

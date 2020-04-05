@@ -31,7 +31,7 @@ class FactsVC: UIViewController {
     return tableView
   }()
   
-  private lazy var emptyTableMessage: UILabel = {
+  private let emptyTableMessage: UILabel = {
     let label = UILabel()
     label.textAlignment = .center
     label.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
@@ -50,47 +50,44 @@ class FactsVC: UIViewController {
   // MARK: - Lifecycle Methods
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
     
+    view.backgroundColor = .white
     view.addSubview(tableView)
+    
     configureTableView()
     getFacts()
   }
   
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    tableView.reloadData()
+  }
+  
   // MARK: - Private Methods
-  private func configureTableView() {
+  
+  /// Function to configure tableView properties
+  /// - Returns: Void
+  private func configureTableView() -> Void {
+    
+    // Registering cell class in tableView
     tableView.register(
       FactsCell.self,
       forCellReuseIdentifier: FactsCell.reuseIdentifier)
     
+    // Setting tableView delegate and data source
     tableView.delegate = self
     tableView.dataSource = self
+    
+    // Adding refresh control to tableView
     tableView.refreshControl = refreshControl
     
+    // Setting tableView constraints
     addTableViewConstraints()
   }
   
-  @objc private func pullToRefersh(_ refershControl: UIRefreshControl) {
-    refershControl.endRefreshing()
-    
-    getFacts()
-  }
-  
-  private func addTableViewConstraints() {
-    tableView.translatesAutoresizingMaskIntoConstraints = false
-    tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-    tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-    tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-    tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-  }
-  
-  private func addEmptyTableViewLabelConstraints() {
-    emptyTableMessage.translatesAutoresizingMaskIntoConstraints = false
-    emptyTableMessage.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
-    emptyTableMessage.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
-  }
-  
-  private func reloadTable() {
+  /// Function to reload tableView and toggle empty table text
+  /// - Returns: Void
+  private func reloadTable() -> Void {
     
     if viewModel.factsArray.count == 0 {
       tableView.bounces = false
@@ -107,8 +104,11 @@ class FactsVC: UIViewController {
     tableView.reloadData()
   }
   
-  private func getFacts() {
+  /// Function to get facts from API. It calls method on viewModel and returns data
+  /// - Returns: Void
+  private func getFacts() -> Void {
     
+    // Calling viewModel method to get facts data from API
     viewModel.getFactsFromAPI {[weak self] (result) in
       switch result {
       case .failure(.noFactsAvailable):
@@ -116,19 +116,29 @@ class FactsVC: UIViewController {
       case .failure(.inValidData):
         break
       case .success(let factsResponse):
-        if let self = self {
-          self.viewModel.factsArray = factsResponse.rows ?? []
-          DispatchQueue.main.async {
-            self.title = factsResponse.title ?? ""
-            self.reloadTable()
+        self?.viewModel.updateFactsArray(factsResponse.rows ?? [])
+        DispatchQueue.main.async {[weak self] in
+          guard let self = self else {
+            return
           }
+          self.title = factsResponse.title ?? ""
+          self.tableView.reloadData()
         }
       }
     }
   }
   
-  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-    tableView.reloadData()
+  // MARK: - Selector Methods
+  
+  /// Function to be called on pull to refresh
+  /// - Parameter refershControl: refershControl Object
+  @objc private func pullToRefersh(_ refershControl: UIRefreshControl) {
+    
+    // Stopping pull to refresh
+    refershControl.endRefreshing()
+    
+    // Getting methods from API
+    getFacts()
   }
 }
 
@@ -148,3 +158,23 @@ extension FactsVC: UITableViewDataSource {
     return cell
   }
 }
+
+// MARK: - Extension for setting constraints on views
+extension FactsVC {
+  
+  /// Function to set constraints on label for empty table message
+  /// - Returns: Void
+  private func addEmptyTableViewLabelConstraints() -> Void {
+    
+    emptyTableMessage.addCenterXConstraint(toView: tableView)
+    emptyTableMessage.addCenterYConstraint(toView: tableView)
+  }
+  
+  /// Function to set tableView constraints
+  /// - Returns: Void
+  private func addTableViewConstraints() -> Void {
+    
+    tableView.anchorToSuperViewEdges()
+  }
+}
+

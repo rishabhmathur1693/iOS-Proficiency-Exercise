@@ -13,6 +13,8 @@ enum FactsError: Error {
   case inValidData
 }
 
+typealias GetFactsDataCompletionHandler = (Result<FactsModel, FactsError>) -> Void
+
 struct FactsViewModel {
   var factsArray: [Row]
   var title: String
@@ -24,31 +26,37 @@ struct FactsViewModel {
     title = ""
   }
   
-  func getFactsFromAPI(completion: @escaping(Result<FactsModel, FactsError>) -> Void) -> Void {
-    guard let url = URL(string: factsAPI) else { return }
-    let urlRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+  mutating func updateFactsArray(_ array: [Row]) {
+    factsArray = array
+  }
+  
+  /// Function to get facts data
+  /// - Parameter completion: Code block to be executed after API is executed
+  /// - Returns: Void
+  func getFactsFromAPI(completion: @escaping GetFactsDataCompletionHandler) -> Void {
     
-    let task = URLSession.shared.dataTask(with: urlRequest) {(data, _, _) in
-      if let data = data {
-        do {
-          let str = String(decoding: data, as: UTF8.self)
-          if let json = str.convertToDictionary() {
-            
-            let newData = try JSONSerialization.data(withJSONObject: json, options: .sortedKeys)
-            
-            let factsObject = try JSONDecoder().decode(FactsModel.self, from: newData)
-            
-            completion(.success(factsObject))
-          }
-        } catch let error {
-          print(error.localizedDescription)
-          completion(.failure(.inValidData))
-        }
-      } else {
+    WebServiceHandler.getAPI(url: factsAPI) { (data) in
+      guard let data = data else {
         completion(.failure(.inValidData))
+        return
       }
+      
+      // Fix: Used this fix as data is not decoding from JSONDecoder normally.
+      let str = String(decoding: data, as: UTF8.self)
+      guard let json = str.convertToDictionary() else {
+        completion(.failure(.inValidData))
+        return
+      }
+      guard let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .sortedKeys) else {
+        completion(.failure(.inValidData))
+        return
+      }
+      
+      guard let factsObject = try? JSONDecoder().decode(FactsModel.self, from: jsonData) else {
+        completion(.failure(.inValidData))
+        return
+      }
+      completion(.success(factsObject))
     }
-    
-    task.resume()
   }
 }

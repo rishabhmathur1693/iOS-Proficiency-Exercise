@@ -8,9 +8,10 @@
 
 import UIKit
 
-class FactsCell: UITableViewCell, ReuseIdentifying {
+class FactsCell: UITableViewCell, ReuseIdentifierProtocol {
   
   // MARK: - Properties
+  
   private let factTitle: UILabel = {
     let label = UILabel()
     label.font = UIFont.systemFont(ofSize: 16.0, weight: .bold)
@@ -35,51 +36,33 @@ class FactsCell: UITableViewCell, ReuseIdentifying {
   }()
   
   // MARK: - Lifecycle Methods
+  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
-    addSubViews(factTitle, factImageView, factDescription)
     configureCell()
   }
   
   // MARK: - Private Methods
-  private func setFactImageViewConstraints() {
-    
-    factImageView.translatesAutoresizingMaskIntoConstraints = false
-    factImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-    factImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-    factImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10).isActive = true
-    factImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-    factImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-  }
   
-  private func setFactDescriptionLabelConstraints() {
-    
-    factTitle.translatesAutoresizingMaskIntoConstraints = false
-    factTitle.leadingAnchor.constraint(equalTo: factImageView.trailingAnchor, constant: 10).isActive = true
-    factTitle.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-    factTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
-  }
-  
-  private func setFactTitleLabelConstraints() {
-    
-    factDescription.translatesAutoresizingMaskIntoConstraints = false
-    factDescription.leadingAnchor.constraint(equalTo: factTitle.leadingAnchor).isActive = true
-    factDescription.topAnchor.constraint(equalTo: factTitle.bottomAnchor, constant: 5).isActive = true
-    factDescription.trailingAnchor.constraint(equalTo: factTitle.trailingAnchor).isActive = true
-    factDescription.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10).isActive = true
-  }
-  
-  private func configureCell() {
+  /// Function to configure cell UI
+  /// - Returns: Void
+  private func configureCell() -> Void {
     
     selectionStyle = .none
     
+    addSubViews(factImageView, factTitle, factDescription)
+    
     setFactImageViewConstraints()
-    setFactDescriptionLabelConstraints()
     setFactTitleLabelConstraints()
+    setFactDescriptionLabelConstraints()
   }
   
-  func prepareCellForDisplay(record: Row) {
+  
+  /// Function to display data on cell
+  /// - Parameter record: Fact record passed from view controller
+  /// - Returns: Void
+  func prepareCellForDisplay(record: Row) -> Void {
     
     factTitle.text = record.title ?? ""
     factDescription.text = record.rowDescription ?? " "
@@ -95,3 +78,90 @@ class FactsCell: UITableViewCell, ReuseIdentifying {
     fatalError("init(coder:) has not been implemented")
   }
 }
+
+// MARK: - Extension for setting constraints on views
+extension FactsCell {
+  
+  /// Set constraints for factImageView
+  /// - Returns: Void
+  private func setFactImageViewConstraints() -> Void {
+    
+    factImageView.addLeadingConstraint(
+      toView: self,
+      attribute: .centerX,
+      relation: .equal,
+      multiplier: 10/187.5,
+      constant: 0)
+    
+    factImageView.addTopConstraint(
+      toView: self,
+      attribute: .top,
+      relation: .equal,
+      constant: 10)
+    
+    factImageView.addWidthConstraint(
+      toView: nil,
+      attribute: .width,
+      relation: .equal,
+      multiplier: 1,
+      constant: 100)
+    
+    factImageView.addHeightConstraint(
+      toView: nil,
+      attribute: .height,
+      relation: .equal,
+      multiplier: 1,
+      constant: 100)
+    
+    factImageView.addBottomConstraint(
+      toView: self,
+      attribute: .bottom,
+      relation: .lessThanOrEqual,
+      multiplier: 1,
+      constant: -10)
+  }
+  
+  /// Set constraints for factTitle
+  /// - Returns: Void
+  private func setFactTitleLabelConstraints() -> Void {
+    
+    factTitle.addTopConstraint(toView: factImageView)
+    
+    factTitle.addLeadingConstraint(
+      toView: factImageView,
+      attribute: .trailing,
+      relation: .equal,
+      multiplier: 1,
+      constant: 10)
+    
+    factTitle.addTrailingConstraint(
+      toView: self,
+      attribute: .centerX,
+      relation: .equal,
+      multiplier: 365/187.5,
+      constant: 0)
+  }
+  
+  /// Set constraints for factDescription
+  /// - Returns: Void
+  private func setFactDescriptionLabelConstraints() -> Void {
+    
+    factDescription.addLeadingConstraint(toView: factTitle)
+    factDescription.addTrailingConstraint(toView: factTitle)
+    
+    factDescription.addTopConstraint(
+      toView: factTitle,
+      attribute: .bottom,
+      relation: .equal,
+      multiplier: 1,
+      constant: 5)
+    
+    factDescription.addBottomConstraint(
+      toView: self,
+      attribute: .bottom,
+      relation: .lessThanOrEqual,
+      multiplier: 1,
+      constant: -10)
+  }
+}
+

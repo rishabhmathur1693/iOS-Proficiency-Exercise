@@ -10,34 +10,43 @@ import UIKit
 
 extension UIViewController {
   
-  func lockView() {
+  /// Lock whole screen to prevent user interaction
+  /// - Returns: Void
+  func lockView() -> Void {
     
-    let view = UIView(frame: self.view.bounds)
-    view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-    view.tag = Constants.viewLockTag
+    // Creating loader background view
+    let loaderBackgroundView = UIView(frame: self.view.bounds)
+    loaderBackgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    loaderBackgroundView.tag = Constants.viewLockTag
     
-    self.view.addSubview(view)
-    
-    view.translatesAutoresizingMaskIntoConstraints = false
-    view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-    view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-    view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-    view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-    
+    // Creating UIActivityIndicatorView view for showing progress
     let activityIndicator = UIActivityIndicatorView(style: .medium)
     activityIndicator.color = .white
     activityIndicator.tag = Constants.activityIndicatorViewTag
+    
+    // Adding views to respective superviews
+    view.addSubview(loaderBackgroundView)
+    loaderBackgroundView.addSubview(activityIndicator)
+    
+    // Setting constraints on loader background view
+    loaderBackgroundView.addLeadingConstraint(toView: view)
+    loaderBackgroundView.addTrailingConstraint(toView: view)
+    loaderBackgroundView.addTopConstraint(toView: view)
+    loaderBackgroundView.addBottomConstraint(toView: view)
+    
+    // Setting constraints on UIActivityIndicator view
+    activityIndicator.addCenterXConstraint(toView: loaderBackgroundView)
+    activityIndicator.addCenterYConstraint(toView: loaderBackgroundView)
+    
+    // Start loader spinning animation
     activityIndicator.startAnimating()
-    
-    view.addSubview(activityIndicator)
-    
-    activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-    activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-    activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
   }
   
-  func unlockView() {
+  /// Unlock view and enable user interaction
+  /// - Returns: Void
+  func unlockView() -> Void {
     
+    // Removing loader view from their respective superviews
     if let lockView = self.view.subviews.filter({ $0.tag == Constants.viewLockTag }).first {
       if let activityIndicator = lockView.subviews.filter({ $0.tag == Constants.activityIndicatorViewTag }).first as? UIActivityIndicatorView {
         activityIndicator.stopAnimating()

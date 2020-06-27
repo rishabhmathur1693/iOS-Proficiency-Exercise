@@ -25,6 +25,8 @@ struct WebServiceHandler {
     let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
       if error == nil, let data = data {
         completionHandler(data)
+      } else {
+        completionHandler(nil)
       }
     }
 

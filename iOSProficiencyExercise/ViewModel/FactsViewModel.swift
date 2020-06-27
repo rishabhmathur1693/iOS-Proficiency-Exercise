@@ -19,44 +19,33 @@ struct FactsViewModel {
   var factsArray: [Row]
   var title: String
   let factsAPI: String
-  
+
   init(_ apiURL: String) {
     factsAPI = apiURL
     factsArray = []
     title = ""
   }
-  
+
   mutating func updateFactsArray(_ array: [Row]) {
     factsArray = array
   }
-  
+
   /// Function to get facts data
   /// - Parameter completion: Code block to be executed after API is executed
   /// - Returns: Void
-  func getFactsFromAPI(completion: @escaping GetFactsDataCompletionHandler) -> Void {
-    
+  func getFactsFromAPI(completion: @escaping GetFactsDataCompletionHandler) {
+
     WebServiceHandler.getAPI(url: factsAPI) { (data) in
       guard let data = data else {
         completion(.failure(.inValidData))
         return
       }
-      
-      // Fix: Used this fix as data is not decoding from JSONDecoder normally.
-      let str = String(decoding: data, as: UTF8.self)
-      guard let json = str.convertToDictionary() else {
+
+      if let response = FactsDataParser().parseFacts(data: data, convertToModel: FactsModel.self) {
+        completion(.success(response))
+      } else {
         completion(.failure(.inValidData))
-        return
       }
-      guard let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .sortedKeys) else {
-        completion(.failure(.inValidData))
-        return
-      }
-      
-      guard let factsObject = try? JSONDecoder().decode(FactsModel.self, from: jsonData) else {
-        completion(.failure(.inValidData))
-        return
-      }
-      completion(.success(factsObject))
     }
   }
 }

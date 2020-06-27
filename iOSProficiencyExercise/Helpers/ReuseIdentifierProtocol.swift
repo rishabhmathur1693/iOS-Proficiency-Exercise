@@ -10,12 +10,12 @@ import Foundation
 
 /// Protocol to get reuse identifier name
 protocol ReuseIdentifierProtocol {
-  
+
   static var reuseIdentifier: String { get }
 }
 
 extension ReuseIdentifierProtocol {
-  
+
   /// Default implementation of ReuseIdentifierProtocol
   static var reuseIdentifier: String {
     return String(describing: Self.self)

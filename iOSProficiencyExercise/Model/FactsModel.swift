@@ -16,7 +16,7 @@ struct FactsModel: Codable {
 struct Row: Codable {
   var title, rowDescription: String?
   var imageHref: String?
-  
+
   enum CodingKeys: String, CodingKey {
     case title
     case rowDescription = "description"

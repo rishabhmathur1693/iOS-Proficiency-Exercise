@@ -25,6 +25,7 @@
 		1D83F231243A9E2D00EC901B /* WebServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D83F230243A9E2D00EC901B /* WebServiceHandler.swift */; };
 		1DD818702439FC4100D21678 /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD8186F2439FC4100D21678 /* ReuseIdentifierProtocol.swift */; };
 		1DF5927824A761880029BC2F /* FactsCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF5927724A761880029BC2F /* FactsCellTests.swift */; };
+		1DF5928024A774410029BC2F /* APIResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF5927C24A770640029BC2F /* APIResponse.json */; };
 		1DF8432824A4B279002ED1CC /* FactsDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF8432724A4B279002ED1CC /* FactsDataParser.swift */; };
 		1DF8433324A53109002ED1CC /* FactsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF8433224A53109002ED1CC /* FactsViewControllerTests.swift */; };
 		C3DAFF1B3815C225D7433D77 /* Pods_iOSProficiencyExercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F2D18A0996B32BFE2B4136 /* Pods_iOSProficiencyExercise.framework */; };
@@ -63,6 +64,7 @@
 		1D83F230243A9E2D00EC901B /* WebServiceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceHandler.swift; sourceTree = "<group>"; };
 		1DD8186F2439FC4100D21678 /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
 		1DF5927724A761880029BC2F /* FactsCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsCellTests.swift; sourceTree = "<group>"; };
+		1DF5927C24A770640029BC2F /* APIResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APIResponse.json; sourceTree = "<group>"; };
 		1DF8432724A4B279002ED1CC /* FactsDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsDataParser.swift; sourceTree = "<group>"; };
 		1DF8433024A53109002ED1CC /* iOSProficiencyExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSProficiencyExerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF8433224A53109002ED1CC /* FactsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewControllerTests.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		1DF8433124A53109002ED1CC /* iOSProficiencyExerciseTests */ = {
 			isa = PBXGroup;
 			children = (
+				1DF5927C24A770640029BC2F /* APIResponse.json */,
 				1DF8433224A53109002ED1CC /* FactsViewControllerTests.swift */,
 				1DF5927724A761880029BC2F /* FactsCellTests.swift */,
 				1DF8433424A53109002ED1CC /* Info.plist */,
@@ -326,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF5928024A774410029BC2F /* APIResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

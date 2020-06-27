@@ -52,6 +52,29 @@ class FactsViewControllerTests: XCTestCase {
   func testViewDidLoad_ShouldSetDelegateAndDataSourceToTheSameObject() {
     XCTAssertEqual(tableView.dataSource as? FactsViewController, tableView.delegate as? FactsViewController)
   }
+
+  func testAPIJSONStructure() {
+    let bundle = Bundle(for: type(of: self))
+
+    guard let path = bundle.url(forResource: "APIResponse", withExtension: "json") else {
+        XCTFail("Missing file: APIResponse.json")
+        return
+    }
+
+    do {
+      let data = try Data(contentsOf: path, options: .mappedIfSafe)
+      guard let factsObject = try? JSONDecoder().decode(FactsModel.self, from: data) else { return }
+
+      XCTAssertNotNil(factsObject)
+      XCTAssertNotNil(factsObject.rows)
+
+      if let rows = factsObject.rows {
+        XCTAssertEqual(rows.count, 14)
+      }
+    } catch {
+      // handle error
+    }
+  }
 }
 
 extension FactsViewControllerTests {

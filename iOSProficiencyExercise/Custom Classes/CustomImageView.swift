@@ -12,6 +12,7 @@ class CustomImageView: UIImageView {
 
   var imageURLString: String?
 
+  /// Function to add loader on image view
   func addLoader() {
     let loaderView = UIView()
     loaderView.tag = Constants.loadingImageViewTag
@@ -35,6 +36,7 @@ class CustomImageView: UIImageView {
     activityIndicatorView.startAnimating()
   }
 
+  /// Function to remove loader from image view
   func removeLoader() {
     let subView = subviews.filter({ $0.tag == Constants.loadingImageViewTag }).first
     if let loaderView = subView, let activityIndicatorView = loaderView.subviews.first as? UIActivityIndicatorView {
@@ -45,6 +47,8 @@ class CustomImageView: UIImageView {
     }
   }
 
+  /// Function to set image in image view from a web URL
+  /// - Parameter urlString: Image web URL
   func setImageFromURL(urlString: String) {
 
     imageURLString = urlString

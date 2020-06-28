@@ -46,7 +46,6 @@ class FactsCell: UITableViewCell, ReuseIdentifierProtocol {
   // MARK: - Private Methods
 
   /// Function to configure cell UI
-  /// - Returns: Void
   private func configureCell() {
 
     selectionStyle = .none
@@ -60,7 +59,6 @@ class FactsCell: UITableViewCell, ReuseIdentifierProtocol {
 
   /// Function to display data on cell
   /// - Parameter record: Fact record passed from view controller
-  /// - Returns: Void
   func prepareCellForDisplay(record: Row) {
 
     factTitle.text = record.title ?? ""
@@ -82,7 +80,6 @@ class FactsCell: UITableViewCell, ReuseIdentifierProtocol {
 extension FactsCell {
 
   /// Set constraints for factImageView
-  /// - Returns: Void
   private func setFactImageViewConstraints() {
 
     factImageView.addLeadingConstraint(
@@ -121,7 +118,6 @@ extension FactsCell {
   }
 
   /// Set constraints for factTitle
-  /// - Returns: Void
   private func setFactTitleLabelConstraints() {
 
     factTitle.addTopConstraint(toView: factImageView)
@@ -142,7 +138,6 @@ extension FactsCell {
   }
 
   /// Set constraints for factDescription
-  /// - Returns: Void
   private func setFactDescriptionLabelConstraints() {
 
     factDescription.addLeadingConstraint(toView: factTitle)

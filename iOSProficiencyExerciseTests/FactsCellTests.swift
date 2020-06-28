@@ -14,7 +14,7 @@ class FactsCellTests: XCTestCase {
   var viewController: FactsViewController!
   var tableView: UITableView!
   var indexPath: IndexPath!
-  var dataProvider = FakeDataSource()
+  var dataProvider: FakeDataSource! = FakeDataSource()
 
   override func setUpWithError() throws {
     viewController = FactsViewController()
@@ -23,42 +23,19 @@ class FactsCellTests: XCTestCase {
     _ = viewController.view
 
     tableView = viewController.tableView
+    dataProvider = FakeDataSource()
     tableView.dataSource = dataProvider
     indexPath = IndexPath(row: 0, section: 0)
   }
 
   override func tearDownWithError() throws {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    viewController = nil
+    tableView = nil
+    indexPath = nil
+    dataProvider = nil
   }
 
-  func testSUT_HasTitleLabel() {
-    if let cell = tableView.dequeueReusableCell(
-      withIdentifier: FactsCell.reuseIdentifier,
-      for: indexPath) as? FactsCell {
-
-      XCTAssertNotNil(cell.factTitle)
-    }
-  }
-
-  func testSUT_HasDescriptionLabel() {
-    if let cell = tableView.dequeueReusableCell(
-      withIdentifier: FactsCell.reuseIdentifier,
-      for: indexPath) as? FactsCell {
-
-      XCTAssertNotNil(cell.factDescription)
-    }
-  }
-
-  func testSUT_HasImageView() {
-    if let cell = tableView.dequeueReusableCell(
-      withIdentifier: FactsCell.reuseIdentifier,
-      for: indexPath) as? FactsCell {
-
-      XCTAssertNotNil(cell.factImageView)
-    }
-  }
-
-  func testConfigWithItem_SetsLabelTexts() {
+  func testConfigWithRowDataAndSetLabelText() {
     if let cell = tableView.dequeueReusableCell(
       withIdentifier: FactsCell.reuseIdentifier,
       for: indexPath) as? FactsCell {

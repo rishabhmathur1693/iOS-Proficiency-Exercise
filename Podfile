@@ -7,5 +7,6 @@ target 'iOSProficiencyExercise' do
 
   # Pods for iOSProficiencyExercise
   pod 'SwiftLint'
+  pod 'ReachabilitySwift'
 
 end

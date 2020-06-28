@@ -34,18 +34,21 @@ struct FactsViewModel {
   /// - Parameter completion: Code block to be executed after API is executed
   /// - Returns: Void
   func getFactsFromAPI(completion: @escaping GetFactsDataCompletionHandler) {
+    if NetworkHandler().isNetworkConnectionAvailable() {
+      WebServiceHandler.getAPI(url: factsAPI) { (data) in
+        guard let data = data else {
+          completion(.failure(.inValidData))
+          return
+        }
 
-    WebServiceHandler.getAPI(url: factsAPI) { (data) in
-      guard let data = data else {
-        completion(.failure(.inValidData))
-        return
+        if let response = FactsDataParser().parseFacts(data: data, convertToModel: FactsModel.self) {
+          completion(.success(response))
+        } else {
+          completion(.failure(.inValidData))
+        }
       }
-
-      if let response = FactsDataParser().parseFacts(data: data, convertToModel: FactsModel.self) {
-        completion(.success(response))
-      } else {
-        completion(.failure(.inValidData))
-      }
+    } else {
+      print("No internet connectivity available.")
     }
   }
 }

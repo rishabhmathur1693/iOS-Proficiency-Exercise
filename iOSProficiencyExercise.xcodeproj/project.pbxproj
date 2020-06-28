@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,7 +22,10 @@
 		1D4A49A7243875AE00B1D57A /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49A6243875AE00B1D57A /* Extension+UIViewController.swift */; };
 		1D4A49A9243886C700B1D57A /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49A8243886C700B1D57A /* Extension+UIImageView.swift */; };
 		1D4A49AB2438E39800B1D57A /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A49AA2438E39800B1D57A /* CustomImageView.swift */; };
+		1D73072324A7FEB000F5D7E8 /* FactsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73072224A7FEB000F5D7E8 /* FactsModelTests.swift */; };
+		1D73072524A807F900F5D7E8 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73072424A807F900F5D7E8 /* NetworkHandler.swift */; };
 		1D83F231243A9E2D00EC901B /* WebServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D83F230243A9E2D00EC901B /* WebServiceHandler.swift */; };
+		1D89AAE824A87A1D000F424F /* NetworkHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D89AAE724A87A1D000F424F /* NetworkHandlerTests.swift */; };
 		1DD818702439FC4100D21678 /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD8186F2439FC4100D21678 /* ReuseIdentifierProtocol.swift */; };
 		1DF5927824A761880029BC2F /* FactsCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF5927724A761880029BC2F /* FactsCellTests.swift */; };
 		1DF5928024A774410029BC2F /* APIResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF5927C24A770640029BC2F /* APIResponse.json */; };
@@ -61,7 +64,10 @@
 		1D4A49A6243875AE00B1D57A /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		1D4A49A8243886C700B1D57A /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
 		1D4A49AA2438E39800B1D57A /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		1D73072224A7FEB000F5D7E8 /* FactsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsModelTests.swift; sourceTree = "<group>"; };
+		1D73072424A807F900F5D7E8 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		1D83F230243A9E2D00EC901B /* WebServiceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceHandler.swift; sourceTree = "<group>"; };
+		1D89AAE724A87A1D000F424F /* NetworkHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandlerTests.swift; sourceTree = "<group>"; };
 		1DD8186F2439FC4100D21678 /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
 		1DF5927724A761880029BC2F /* FactsCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsCellTests.swift; sourceTree = "<group>"; };
 		1DF5927C24A770640029BC2F /* APIResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APIResponse.json; sourceTree = "<group>"; };
@@ -206,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				1D83F230243A9E2D00EC901B /* WebServiceHandler.swift */,
+				1D73072424A807F900F5D7E8 /* NetworkHandler.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -225,6 +232,8 @@
 				1DF8433224A53109002ED1CC /* FactsViewControllerTests.swift */,
 				1DF5927724A761880029BC2F /* FactsCellTests.swift */,
 				1DF8433424A53109002ED1CC /* Info.plist */,
+				1D73072224A7FEB000F5D7E8 /* FactsModelTests.swift */,
+				1D89AAE724A87A1D000F424F /* NetworkHandlerTests.swift */,
 			);
 			path = iOSProficiencyExerciseTests;
 			sourceTree = "<group>";
@@ -249,6 +258,7 @@
 				1D013E0724364DC900EBC229 /* Frameworks */,
 				1D013E0824364DC900EBC229 /* Resources */,
 				1DEE1EC924A73DBF000C8C76 /* ShellScript */,
+				471C4E0EA021B3990F1A1FEF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,6 +363,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
+		471C4E0EA021B3990F1A1FEF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOSProficiencyExercise/Pods-iOSProficiencyExercise-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOSProficiencyExercise/Pods-iOSProficiencyExercise-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOSProficiencyExercise/Pods-iOSProficiencyExercise-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7A5029AA6578C55A649268CC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -391,6 +418,7 @@
 				1D013E2B2436566900EBC229 /* FactsViewModel.swift in Sources */,
 				1D83F231243A9E2D00EC901B /* WebServiceHandler.swift in Sources */,
 				1DF8432824A4B279002ED1CC /* FactsDataParser.swift in Sources */,
+				1D73072524A807F900F5D7E8 /* NetworkHandler.swift in Sources */,
 				1D4A49A9243886C700B1D57A /* Extension+UIImageView.swift in Sources */,
 				1D4A49A7243875AE00B1D57A /* Extension+UIViewController.swift in Sources */,
 				1D013E0E24364DC900EBC229 /* AppDelegate.swift in Sources */,
@@ -407,6 +435,8 @@
 			files = (
 				1DF8433324A53109002ED1CC /* FactsViewControllerTests.swift in Sources */,
 				1DF5927824A761880029BC2F /* FactsCellTests.swift in Sources */,
+				1D73072324A7FEB000F5D7E8 /* FactsModelTests.swift in Sources */,
+				1D89AAE824A87A1D000F424F /* NetworkHandlerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

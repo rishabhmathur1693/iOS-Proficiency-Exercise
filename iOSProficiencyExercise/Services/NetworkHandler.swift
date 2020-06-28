@@ -6,15 +6,15 @@
 //  Copyright © 2020 Rishabh Mathur. All rights reserved.
 //
 
-import UIKit
+import Reachability
 
 struct NetworkHandler {
 
   /// Function to check for internet connectivity before performing network operations.
   /// - Returns: This function returns Bool value as per internet connection status.
   func isNetworkConnectionAvailable() -> Bool {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-      let connection = appDelegate.reachability?.connection else { return false }
+    guard let reachability = try? Reachability() else { return false }
+    let connection = reachability.connection
 
     switch connection {
     case .wifi:

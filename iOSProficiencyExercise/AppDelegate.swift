@@ -7,45 +7,15 @@
 //
 
 import UIKit
-import Reachability
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-  let reachability = try? Reachability()
 
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
 
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(reachabilityDidChange(_:)),
-                                           name: .reachabilityChanged, object: reachability)
-    do {
-        try reachability?.startNotifier()
-    } catch {
-        print("could not start reachability notifier")
-    }
-
     return true
-  }
-
-  @objc func reachabilityDidChange(_ notification: Notification?) {
-    guard let reachability = notification?.object as? Reachability else {
-      print("Invalid reachability object.")
-      return
-    }
-
-      switch reachability.connection {
-      case .wifi:
-          print("Reachable via WiFi")
-      case .cellular:
-          print("Reachable via Cellular")
-      case .none:
-          print("Network not reachable")
-      case .unavailable:
-          print("Network unavailable")
-      }
   }
 
   // MARK: UISceneSession Lifecycle

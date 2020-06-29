@@ -11,8 +11,6 @@ import Foundation
 /// Constant values used in the application
 struct Constants {
   static let apiURL = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-  static let activityIndicatorViewTag = 100
-  static let viewLockTag = 101
   static let loadingImageViewTag = 102
   static let emptyTableMessageLabelTag = 103
 }

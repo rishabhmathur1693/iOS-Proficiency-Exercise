@@ -31,11 +31,6 @@ extension UIView {
     translatesAutoresizingMaskIntoConstraints = false
   }
 
-  /// Disable auto layout constraints on a UIView element
-  func disableAutoLayout() {
-    translatesAutoresizingMaskIntoConstraints = true
-  }
-
   /// Function to add leading constraint on a UIView element
   /// - Parameters:
   ///   - view: View to which the constraint is applied
